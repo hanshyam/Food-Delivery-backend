@@ -11,12 +11,13 @@ import orderRouter from "./routes/orderRoute.js";
 const app = express();
 const port = 4000
 
+
 // middleware
-app.use(express.json())
 app.use(cors({
   origin: 'https://food-delivery-frontend-seven-khaki.vercel.app',
   credentials: true // if using cookies or authentication headers
 }));
+app.use(express.json())
 
 
 //  db Connection
