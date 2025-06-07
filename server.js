@@ -13,7 +13,10 @@ const port = 4000
 
 // middleware
 app.use(express.json())
-app.use(cors())
+app.use(cors({
+  origin: 'https://food-delivery-frontend-seven-khaki.vercel.app',
+  credentials: true // if using cookies or authentication headers
+}));
 
 
 //  db Connection
