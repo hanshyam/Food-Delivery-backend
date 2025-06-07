@@ -11,11 +11,24 @@ import orderRouter from "./routes/orderRoute.js";
 const app = express();
 const port = 4000
 
+const allowedOrigins = [
+  'https://food-delivery-frontend-git-main-ghanshyam-patidars-projects.vercel.app',
+  'https://food-delivery-admin-git-main-ghanshyam-patidars-projects.vercel.app'  // your admin frontend URL
+];
 
 // middleware
 app.use(cors({
-  origin: 'https://food-delivery-frontend-git-main-ghanshyam-patidars-projects.vercel.app',
-  credentials: true // if using cookies or authentication headers
+  origin: function(origin, callback){
+    // Allow requests with no origin (like mobile apps, curl, postman)
+    if(!origin) return callback(null, true);
+
+    if(allowedOrigins.indexOf(origin) !== -1){
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true
 }));
 app.use(express.json())
 
