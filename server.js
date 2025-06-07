@@ -14,7 +14,7 @@ const port = 4000
 
 // middleware
 app.use(cors({
-  origin: 'https://food-delivery-frontend-seven-khaki.vercel.app',
+  origin: 'https://food-delivery-frontend-git-main-ghanshyam-patidars-projects.vercel.app',
   credentials: true // if using cookies or authentication headers
 }));
 app.use(express.json())
